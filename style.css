@@ -3,6 +3,7 @@ body {
     color: rgb(45, 45, 45);
     font-family: arial;
 }
+
 #all-contents {
     max-width: 800px;
     margin: auto;
@@ -15,16 +16,20 @@ nav {
     display: flex;
     border: 2px black solid;
 }
+
 #title-text {
     display: inline-block;
     margin-left: 16px;
 }
+
 .nav-ul {
     list-style-image: none;
 }
+
 .nav-li {
     display: inline-block;
 }
+
 a {
     text-decoration: none;
     color: #fff;
@@ -32,24 +37,33 @@ a {
 
 /* main container area beneath menu */
 main {
+    display: flex;
     background: rgb(245, 238, 219);
-    display: inline-flex;
 }
-.sidebar {
-    margin-right: 25px;
-    border: 2px black solid;
+
+#sidebar {
+    border-top: 2px black solid;
+    border-left: 2px black solid;
+    border-bottom: 2px black solid;
 }
-.sidebar-img {
-    width: 200px;
+
+#sidebar-img {
+    width: fit-content;
 }
-.content {
+
+#content {
     flex: 1;
+    border: 2px black solid; 
+    width: max-content;
+}
+
+#interests {
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 /* portfolio styles */
-#interests {
-    border: 4px silver ridge;
-}
+
 h2, h3 {
     margin: 2px;
 }
