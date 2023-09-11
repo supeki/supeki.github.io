@@ -4,7 +4,7 @@ body {
     font-family: arial;
 }
 
-#all-contents {
+.all-contents {
     max-width: 800px;
     margin: auto;
 }
@@ -17,17 +17,9 @@ nav {
     border: 2px black solid;
 }
 
-#title-text {
+.title-text {
     display: inline-block;
     margin-left: 16px;
-}
-
-.nav-ul {
-    list-style-image: none;
-}
-
-.nav-li {
-    display: inline-block;
 }
 
 a {
@@ -41,23 +33,23 @@ main {
     background: rgb(245, 238, 219);
 }
 
-#sidebar {
+.sidebar {
     border-top: 2px black solid;
     border-left: 2px black solid;
     border-bottom: 2px black solid;
 }
 
-#sidebar-img {
+.sidebar-img {
     width: fit-content;
 }
 
-#content {
+.content {
     flex: 1;
     border: 2px black solid; 
     width: max-content;
 }
 
-#interests {
+.interests {
     margin-top: 16px;
     margin-bottom: 16px;
 }
@@ -66,4 +58,15 @@ main {
 
 h2, h3 {
     margin: 2px;
+}
+
+.buttons-div {      
+    padding-top: 8%;
+    text-align: center;  
+    bottom: 0px; 
+    width: 100%;
+}
+
+.button {
+  display: inline-block;
 }
