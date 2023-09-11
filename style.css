@@ -37,6 +37,7 @@ main {
 }
 .sidebar {
     margin-right: 25px;
+    border: 2px black solid;
 }
 .sidebar-img {
     width: 200px;
