@@ -1,0 +1,54 @@
+body {
+    background: rgb(125, 198, 205);
+    color: rgb(45, 45, 45);
+    font-family: arial;
+}
+#all-contents {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* navigation menu */
+nav {
+    background: rgb(127, 127, 127);
+    margin: 2px;
+    display: flex;
+    border: 2px black solid;
+}
+#title-text {
+    display: inline-block;
+    margin-left: 16px;
+}
+.nav-ul {
+    list-style-image: none;
+}
+.nav-li {
+    display: inline-block;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* main container area beneath menu */
+main {
+    background: rgb(245, 238, 219);
+    display: inline-flex;
+}
+.sidebar {
+    margin-right: 25px;
+}
+.sidebar-img {
+    width: 200px;
+}
+.content {
+    flex: 1;
+}
+
+/* portfolio styles */
+#interests {
+    border: 4px silver ridge;
+}
+h2, h3 {
+    margin: 2px;
+}

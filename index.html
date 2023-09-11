@@ -1,48 +1,58 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <link rel="stylesheet" href="style.css">
     <title>Maril's Delight</title>
   </head>
 
   <body>
     <!-- Visible HTML elements GO HERE -->
-    <div>
+    <div id="all-contents">
       <nav>
-        <h1><span style="color: purple">Maril's</span> <span style="color: limegreen;">Delight</span> <img style="max-width: 16px; max-height: 16px;"
+        <h1 id="title-text"><span style="color: purple">Maril's</span> <span style="color: limegreen;">Delight</span> <img style="max-width: 16px; max-height: 16px;"
           src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"></h1>
-        <audio controls autoplay loop
-        <source src="https://archive.org/download/unnamed_20211126/01%20Fortune%27s%20Delight.mp3" />
-      </audio>
-        <ul>
-          <li>
+
+        <audio controls autoplay loop style="margin: 8px; margin-left: 64px;">
+          <source src="https://archive.org/download/unnamed_20211126/01%20Fortune%27s%20Delight.mp3" />
+        </audio>
+
+        <ul style="margin-left: 32px;" id="nav-ul">
+          <li id="nav-li">
             <a href="index.html">Link to Index</a>
           </li>
-          <li>
+          <li id="nav-li">
             <a href="portfolio.html">Link to Portfolio</a>
           </li>
         </ul>
       </nav>
+
       <main>
         <!--Content Section-->
         <div style="border: 2px solid; width: fit-content;">
+
           <h2 style="margin: 2px; color: purple;">Daniel</h2>
           <p style="margin: 2px;">The wanna-be programmer.</p>
           <hr style="border: 1px black solid;">
+
           <!--Interests Section-->
           <div style="margin: 2px;" />
+
             <h3 style="text-align: center;">Interests</h3>
+
             <ul>
               <li><span style="color: darkblue;">Lua</span> Scripting</li>
               <li><span style="color: blue;">C/C++</span> Programming (<span style="color: darkmagenta;">C#</span> is bad for you.)</li>
-              <li style="color: lightcoral;">Game Modding</li>
+              <li><span style="color: lightcoral;">Game Modding</span></li>
             </ul>
+
             <h3 style="text-align: center;">More Specific Interests</h3>
+
             <ul>
               <li>The active development of <span style="color: yellow; text-shadow: -0.5px -0.5px blue, 0.5px -0.5px blue, -0.5px 0.5px blue, 0.5px 0.5px blue">Sonic</span> <span style="color: blue;">Robo Blast</span> <span style="color: orange; text-shadow: -0.5px -0.5px whitesmoke, 0.5px -0.5px whitesmoke, -0.5px 0.5px whitesmoke, 0.5px 0.5px whitesmoke">2</span>.</li>
               <li><span style="color: blue;">SoniC</span>Port</li>
               <li>Using &gt; and &lt; without having semi-colons and html syntax please?</li>
             </ul>
-          </div>
+          </div>  
         </div>
       </main>
     </div>
