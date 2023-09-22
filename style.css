@@ -9,6 +9,11 @@ body {
     margin: auto;
 }
 
+#all-contents {
+    max-width: 800px;
+    margin: auto;
+}
+
 /* navigation menu */
 nav {
     background: rgb(127, 127, 127);
@@ -54,8 +59,6 @@ main {
     margin-bottom: 16px;
 }
 
-/* portfolio styles */
-
 h2, h3 {
     margin: 2px;
 }
@@ -69,4 +72,32 @@ h2, h3 {
 
 .button {
   display: inline-block;
+}
+
+/* portfolio styles */
+
+         /* portfolio styles */
+.content h1 {
+    color: black;
+}
+
+#portfolio {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#portfolio li {
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#portfolio li:hover {
+    background: #eee;
+}
+
+#portfolio a {
+    text-decoration: none;
+    color: #454545;
 }

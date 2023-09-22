@@ -2,21 +2,39 @@
 <html>
     <head>
         <title>Maril's portfolio</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
         <div id="all-contents">
             <nav>
-                <h1>Maril's portfolio</h1>
-                <ul id="nav-ul">
-                   <li class="nav-li">
-                   <a class="nav-a" href="index.html">Home</a>
-                 </li>
-                 <li class="nav-li">
-                   <a class="nav-a" href="portfolio.html">Portfolio</a>
-                 </li>
-             </ul>
-         </nav>
-     </div>
+                <h1 class="title-text"><span style="color: purple">Maril's</span> <span style="color: limegreen;">Delight</span> <img style="max-width: 16px; max-height: 16px;"
+                  src="https://upload.wikimedia.org/wikipedia/commons/1/19/C_Logo.png"></h1>
+        
+                <audio controls autoplay loop style="margin: 8px; margin-left: 64px;">
+                    <source src="https://archive.org/download/unnamed_20211126/01%20Fortune%27s%20Delight.mp3" />
+                </audio>
+        
+                <ul style="margin-left: 32px;" class="nav-ul">
+                    <li class="nav-li">
+                        <a href="index.html">Link to Index</a>
+                    </li>
+                    <li class="nav-li">
+                        <a href="portfolio.html">Link to Portfolio</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main>
+                <div class="content">
+                    <h1>Portfolio</h1>
+                    <ul id="portfolio">
+                        <li><a href="projects/platformer/">Platformer : A cannon - dodging, collectible - grabbing adventure game for Halleb0t</a></li>
+                        <li><a href="projects/bouncing-box/">Bouncing Box : A project that gives you a taste of game development on the web </a></li>
+                        <li><a href="projects/circularity/">Circularity : A motion poem using random number generation and velocity applied to circle shapes...</a></li>
+                    </ul>
+                </div>
+            </main>
+        </div>
     </body>
 </html>
