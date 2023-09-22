@@ -9,11 +9,6 @@ body {
     margin: auto;
 }
 
-#all-contents {
-    max-width: 800px;
-    margin: auto;
-}
-
 /* navigation menu */
 nav {
     background: rgb(127, 127, 127);
