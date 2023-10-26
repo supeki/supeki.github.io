@@ -101,19 +101,7 @@ function changeAnimationType() {
         currentAnimationType = animationTypes.walk;
       }
     } else if (player.onGround) {
-      if (keyPress.down) {
-        currentAnimationType = animationTypes.duck;
-        if (duckTimer < DUCK_COUNTER_IDLE_VALUE) {
-          // not using index 0 because the animation is too slow then
-          frameIndex = 3;
-          duckTimer = DUCK_COUNTER_IDLE_VALUE * 2 - frameIndex;
-        }
-      } else if (
-        duckTimer === 0 ||
-        currentAnimationType === animationTypes.walk
-      ) {
-        currentAnimationType = animationTypes.frontIdle;
-      }
+      currentAnimationType = animationTypes.frontIdle;
     }
   }
 }
@@ -218,7 +206,7 @@ function drawRobot() {
       spriteWidth,
       spriteHeight,
       player.x - hitDx,
-      player.y - hitDy,
+      player.y - hitDy-35,
       player.width,
       player.height
     );
@@ -233,7 +221,7 @@ function drawRobot() {
       spriteWidth,
       spriteHeight,
       -player.x - player.width + hitDx,
-      player.y - hitDy,
+      player.y - hitDy-35,
       player.width,
       player.height
     );

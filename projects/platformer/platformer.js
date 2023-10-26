@@ -28,12 +28,12 @@ $(function () {
      * Comment the lines out to remove the grid
      */
 
-    // for (let i = 100; i < canvas.width; i += 100) {
-    //   createPlatform(i, canvas.height, -1, -canvas.height);
-    // }
-    // for (let i = 100; i < canvas.height; i += 100) {
-    //   createPlatform(canvas.width, i, -canvas.width, -1);
-    // }
+    for (let i = 100; i < canvas.width; i += 100) {
+      createPlatform(i, canvas.height, -1, -canvas.height);
+    }
+    for (let i = 100; i < canvas.height; i += 100) {
+      createPlatform(canvas.width, i, -canvas.width, -1);
+    }
 
     /////////////////////////////////////////////////
     //////////ONLY CHANGE BELOW THIS POINT///////////
@@ -44,8 +44,31 @@ $(function () {
     // You must decide the x position, y position, width, and height of the platforms
     // example usage: createPlatform(x,y,width,height)
 
+    let starty = 200;
 
+    // Top
+    createPlatform(0,starty,350,25);
+    createPlatform(350,starty+25,250,25);
+    createPlatform(600,starty+50,250,25);
+    createPlatform(850,starty+75,250,25);
 
+    // Middle 1
+    createPlatform(1050,starty+150,350,25);
+    createPlatform(800,starty+175,250,25);
+    createPlatform(550,starty+200,250,25);
+    createPlatform(300,starty+225,250,25);
+
+    // Middle 2
+    createPlatform(0,starty+300,350,25);
+    createPlatform(350,starty+325,250,25);
+    createPlatform(600,starty+350,250,25);
+    createPlatform(850,starty+375,250,25);
+
+    // Bottom
+    createPlatform(1050,starty+450,350,25);
+    createPlatform(800,starty+475,250,25);
+    createPlatform(550,starty+500,250,25);
+    createPlatform(300,starty+525,250,25);
     
     // TODO 2
     // Create collectables
@@ -53,7 +76,7 @@ $(function () {
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
 
-
+    createCollectable('steve', 150, starty + 150, 0, 0);
 
 
     // TODO 3
@@ -62,6 +85,9 @@ $(function () {
     // Your wall choices are: 'top' 'left' 'right' and 'bottom'
     // example usage: createCannon(side, position, delay, width, height)
 
+    createCannon('left', 0, 1000, 64, 64);
+    createCannon('left', 10, 1000, 64, 64);
+    createCannon('left', 20, 1000, 64, 64);
 
 
 
