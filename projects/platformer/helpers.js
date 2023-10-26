@@ -206,7 +206,7 @@ function drawRobot() {
       spriteWidth,
       spriteHeight,
       player.x - hitDx,
-      player.y - hitDy-35,
+      player.y - hitDy,
       player.width,
       player.height
     );
@@ -221,13 +221,14 @@ function drawRobot() {
       spriteWidth,
       spriteHeight,
       -player.x - player.width + hitDx,
-      player.y - hitDy-35,
+      player.y - hitDy,
       player.width,
       player.height
     );
     ctx.restore(); //put the canvas back to normal
   }
 }
+
 
 function collision() {
   player.onGround = false; // Reset this every frame; if the player is actually on the ground, the resolveCollision function will set it to true
@@ -237,7 +238,7 @@ function collision() {
     if (
       player.x + hitBoxWidth > platforms[i].x &&
       player.x < platforms[i].x + platforms[i].width &&
-      player.y < platforms[i].y + platforms[i].height &&
+      player.y + hitBoxHeight/2 < platforms[i].y+platforms[i].height &&
       player.y + hitBoxHeight > platforms[i].y
     ) {
       //now that we know we have collided, we figure out the direction of collision
@@ -285,10 +286,10 @@ function resolveCollision(objx, objy, objw, objh) {
     if (dy > 0) {
       //bottom collision
       collisionDirection = "bottom";
-      player.y = player.y + originy + 1;
-      player.speedY = 0;
+      player.y = player.y + originy + player.speedY;
     } else {
       //top collision
+      if (player.speedY < 0) {return;}
       collisionDirection = "top";
       player.y = player.y - originy;
       player.speedY = 0;
@@ -300,11 +301,17 @@ function resolveCollision(objx, objy, objw, objh) {
       collisionDirection = "left";
       player.x = player.x + originx;
       player.speedX = 0;
+      if ((player.y+hitBoxHeight/2 >= objh) && (player.onGround)) {
+        player.y = player.y - originy;
+      }
     } else {
       //right collision
       collisionDirection = "right";
       player.x = player.x - originx;
       player.speedX = 0;
+      if ((player.y+hitBoxHeight/2 >= objh) && (player.onGround)) {
+        player.y = player.y - originy;
+      }
     }
   }
 
@@ -320,27 +327,44 @@ function projectileCollision() {
   for (var i = 0; i < projectiles.length; i++) {
     //this deletes any projectiles that go off the screen
     if (
-      projectiles[i].x > canvas.width + 100 + projectiles[i].width ||
-      projectiles[i].x < -100 - projectiles[i].width ||
-      projectiles[i].y > canvas.height + 100 + projectiles[i].height ||
-      projectiles[i].y < -100 - projectiles[i].height
+        (projectiles[i].x < 0 || projectiles[i].x > 1345) && projectiles[i].y < 650
     ) {
+      projectiles[i].x = projectiles[i].x - projectiles[i].speedX
+      projectiles[i].speedX = -projectiles[i].speedX;
+    } else if (projectiles[i].x < 0 || projectiles[i].x > 1345) {
       projectiles.splice(i, 1);
+    }
+
+    if (
+      projectiles[i].x < player.x + hitBoxWidth/2 &&
+      projectiles[i].x + projectiles[i].width > player.x + hitBoxWidth/2 &&
+      projectiles[i].y < player.y + hitBoxHeight/2 &&
+      projectiles[i].y + projectiles[i].height > player.y + hitBoxHeight
+    ) {
+      currentAnimationType = animationTypes.frontDeath;
+      frameIndex = 0;
+    }
+    
+    projectiles[i].onGround = false;
+    for (var j = 0; j < platforms.length; j++) {
+      if (
+        projectiles[i].x + projectiles[i].width > platforms[j].x &&
+        projectiles[i].x < platforms[j].x + platforms[j].width &&
+        projectiles[i].y < platforms[j].y - platforms[j].height &&
+        projectiles[i].y + projectiles[i].height > platforms[j].y
+      ) {
+        projectiles[i].onGround = true;
+        projectiles[i].y = platforms[j].y - projectiles[i].height;
+        projectiles[i].speedY = 0;
+      }
+    }
+
+    if (!projectiles[i].onGround) {
+      projectiles[i].speedY = projectiles[i].speedY + gravity;
     }
 
     if (i === projectiles.length) {
       return;
-    }
-
-    //collision with the player
-    if (
-      projectiles[i].x < player.x + hitBoxWidth &&
-      projectiles[i].x + projectiles[i].width > player.x &&
-      projectiles[i].y < player.y + hitBoxHeight &&
-      projectiles[i].y + projectiles[i].height > player.y
-    ) {
-      currentAnimationType = animationTypes.frontDeath;
-      frameIndex = 0;
     }
   }
 }
@@ -425,7 +449,7 @@ function drawProjectiles() {
 
 function drawCannons() {
   for (var i = 0; i < cannons.length; i++) {
-    if (cannons[i].projectileCountdown >= cannons[i].timeBetweenShots) {
+    if (cannons[i].projectileCountdown >= cannons[i].timeBetweenShots-Math.random()*3) {
       cannons[i].projectileCountdown = 0;
       createProjectile(
         cannons[i].location,
@@ -599,33 +623,37 @@ function createProjectile(wallLocation, x, y, width, height) {
       speedY: projectileSpeed,
       width,
       height,
+      onGround: false
     });
   } else if (wallLocation === "bottom") {
     projectiles.push({
       x: x + 47,
-      y: y + 50 + height / 2,
+      y: y + height / 2,
       speedX: 0,
       speedY: -projectileSpeed,
       width,
       height,
+      onGround: false
     });
   } else if (wallLocation === "left") {
     projectiles.push({
-      x: x - 80 - width / 2,
+      x: x - width / 2,
       y: y + 46,
       speedX: projectileSpeed,
       speedY: 0,
       width,
       height,
+      onGround: false
     });
   } else if (wallLocation === "right") {
     projectiles.push({
-      x: x + 40 + width / 2,
-      y: y - 71.5,
+      x: x + width / 2,
+      y: y - 46,
       speedX: -projectileSpeed,
       speedY: 0,
       width,
       height,
+      onGround: false
     });
   }
 
