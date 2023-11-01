@@ -8,7 +8,8 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-image: url('https://supekkykitsune.neocities.org/images/art/mobile.png');
+			background-size: cover;
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -19,6 +20,10 @@
 		}
 		.board{
 			height: 100vh;
+			background-image: url('https://supekkykitsune.neocities.org/images/SPRB2BCK.png');
+		}
+		.board-text {
+			color: white;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -26,6 +31,7 @@
 </head>
 <body class="board">
 	<!-- HTML for the box -->
+	<div class="board-text">0</div>
 	<div class="box">?</div>
 
 	<script>
@@ -39,6 +45,7 @@
 			
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
+			var boardtext = jQuery('.board-text');
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 			var boardHeight = board.height();
 
@@ -55,8 +62,8 @@
 			}
 
 			// changes the text displayed on the Box
-			function changeBoxText(newText) {
-				box.text(newText);
+			function changeBoardText(newText) {
+				boardtext.text(newText);
 			}
 
 			//////////////////////////////////////////////////////////////////
@@ -119,11 +126,11 @@
 				else
 					positionY = boardHeight;
 
-				speed++;
+				speed *= 1.5;
 				score++;
 				moveBoxTo(positionX, positionY);
 
-				changeBoxText(score);
+				changeBoardText(score);
 
 			};
 		})();
