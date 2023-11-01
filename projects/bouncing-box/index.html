@@ -15,7 +15,7 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 120px;  /* <--- Change me! */
 		}
 		.board{
 			height: 100vh;
@@ -40,16 +40,18 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
+			var boardHeight = board.height();
 
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+			setInterval(update, 50/3);
 			
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
+				box.css("top", newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -63,7 +65,12 @@
 			
 			// TODO 2 - Variable declarations 
 			
-
+			var positionX = 0;
+			var positionY = 0;
+			var speed = 1;
+			var score = 0;
+			var xdir = 1;
+			var ydir = 1;
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,7 +78,27 @@
 			turn it around! 
 			*/
 			function update() {
-				
+
+				positionX += speed*xdir;
+				positionY += speed*ydir;
+
+				if (positionX > boardWidth) {
+					xdir *= -1;
+					positionX -= speed*dir;
+				} else if (positionX < 0) {
+					xdir *= -1;
+					positionX -= speed*dir;
+				}
+
+				if (positionY > boardHeight) {
+					ydir *= -1;
+					positionY -= speed*dir;
+				} else if (positionY < 0) {
+					ydir *= -1;
+					positionY -= speed*dir;
+				}
+
+				moveBoxTo(positionX, positionY);
 
 			};
 
@@ -81,8 +108,22 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
 
+				if (xdir > 0)
+					positionX = 0;
+				else
+					positionX = boardWidth;
+
+				if (ydir > 0)
+					positionY = 0;
+				else
+					positionY = boardHeight;
+
+				speed++;
+				score++;
+				moveBoxTo(positionX, positionY);
+
+				changeBoxText(score);
 
 			};
 		})();
