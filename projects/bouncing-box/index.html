@@ -6,8 +6,8 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 70px;
-			height: 70px;
+			width: 128px;
+			height: 128px;
 			background-image: url('https://supekkykitsune.neocities.org/images/art/mobile.png');
 			background-size: cover;
 			font-size: 300%;
@@ -24,6 +24,8 @@
 		}
 		.board-text {
 			color: white;
+			text-align: center;
+			font-size: 300%;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -32,7 +34,7 @@
 <body class="board">
 	<!-- HTML for the box -->
 	<div class="board-text">0</div>
-	<div class="box">?</div>
+	<div class="box"></div>
 
 	<script>
 		(function(){
@@ -72,8 +74,8 @@
 			
 			// TODO 2 - Variable declarations 
 			
-			var positionX = 0;
-			var positionY = 0;
+			var positionX = 32;
+			var positionY = 32;
 			var speed = 1;
 			var score = 0;
 			var xdir = 1;
@@ -89,21 +91,24 @@
 				positionX += speed*xdir;
 				positionY += speed*ydir;
 
-				if (positionX > boardWidth) {
+				if (positionX > boardWidth-32) {
 					xdir *= -1;
 					positionX -= speed*dir;
-				} else if (positionX < 0) {
+				} else if (positionX < 32) {
 					xdir *= -1;
 					positionX -= speed*dir;
 				}
 
-				if (positionY > boardHeight) {
+				if (positionY > boardHeight-32) {
 					ydir *= -1;
 					positionY -= speed*dir;
-				} else if (positionY < 0) {
+				} else if (positionY < 32) {
 					ydir *= -1;
 					positionY -= speed*dir;
 				}
+
+				if (speed > 1)
+					speed *= 0.99; 
 
 				moveBoxTo(positionX, positionY);
 
@@ -116,17 +121,7 @@
 			*/
 			function handleBoxClick() {
 
-				if (xdir > 0)
-					positionX = 0;
-				else
-					positionX = boardWidth;
-
-				if (ydir > 0)
-					positionY = 0;
-				else
-					positionY = boardHeight;
-
-				speed *= 1.5;
+				speed *= 2;
 				score++;
 				moveBoxTo(positionX, positionY);
 
