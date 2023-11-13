@@ -285,8 +285,7 @@
 			if (borderColor && !borderThickness) { borderThickness = 1; }
 			
 			// first draw the circle's border - don't use stroke //
-			circle = draw.circle(props.radius+borderThickness, borderColor, null, null, null, null, circle);
-			draw.circle(props.radius, props.color, null, null, null, null, circle);
+			circle = draw.polyStar(props.radius+borderThickness, 3, 1, 90, '#F0F', borderColor, null, null, null, null, circle);
 			circle.x = props.x;
 			circle.y = props.y;
 			
