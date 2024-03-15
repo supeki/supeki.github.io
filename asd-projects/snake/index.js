@@ -403,7 +403,7 @@ function makeSnakeSquare(row, column) {
   }
 
   if (snake.body.length > 1) {
-    snake.body[snake.body.length-1].element.attr("id", "");
+    snake.body[snake.body.length-1].element.attr("id", "  ");
     snakeSquare.element.attr("id", "snake-tail");
   }
 
