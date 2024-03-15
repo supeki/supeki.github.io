@@ -14,7 +14,7 @@ body {
   color: white;
 }
 
-.snake, .apple {
+.snake, .apple, .rapple {
   display: block;
   width: 20px;
   height: 20px;
@@ -28,10 +28,19 @@ body {
 }
 
 #snake-head {
+  background-color: lightgreen;
+}
+
+#snake-tail {
   background-color: darkgreen;
 }
 
 .apple {
   background-color: red;
+  z-index: 1;
+}
+
+.rapple {
+  background-color: white;
   z-index: 1;
 }
