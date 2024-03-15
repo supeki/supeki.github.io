@@ -20,10 +20,10 @@ function resetAndRender() {
 // all of your apply functions
 function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
-  //applyFilter(reddify);
-  //applyFilterNoBackground(decreaseBlue);
-  //applyFilterNoBackground(increaseGreenByBlue);
-  //applyFilter(increaseRedByGreenAndDecreaseGreen);
+  applyFilterNoBackground(reddify);
+  applyFilterNoBackground(decreaseBlue);
+  applyFilterNoBackground(increaseGreenByBlue);
+  applyFilterNoBackground(increaseRedByGreenAndDecreaseGreen);
   smudge();
   
 
